@@ -27,8 +27,8 @@ static int	ft_count(char const *s, char c)
 	int	b;
 
 	a = 0;
-	b = -1;
-	while (*(s + ++b))
+	b = 0;
+	while (*(s + b))
 	{
 		if (*(s + b) != c)
 		{
@@ -37,6 +37,7 @@ static int	ft_count(char const *s, char c)
 				b++;
 			continue ;
 		}
+		b++;
 	}
 	return (a);
 }
