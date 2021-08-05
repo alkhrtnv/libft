@@ -15,12 +15,12 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	{
 		if (c > b)
 		{
-			c[len - 1] = b[len - 1];
+			*(c + len - 1) = *(b + len - 1);
 			len--;
 		}
-		if (b >= c)
+		else
 		{
-			c[a] = b[a];
+			*(c + a) = *(b + a);
 			a++;
 		}
 	}

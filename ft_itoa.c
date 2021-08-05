@@ -17,7 +17,7 @@ char	*ft_itoa(int n)
 	d = (char *)malloc(sizeof(char) * b + 1);
 	if (!d)
 		return (NULL);
-	d[b] = '\0';
+	*(d + b) = '\0';
 	d = ft_swapnum(n, d);
 	d = ft_strrev(d);
 	return (d);
@@ -52,33 +52,30 @@ static char	*ft_swapnum(int n, char *d)
 	{
 		if (n < 0)
 		{
-			c[a++] = '-';
+			*(c + a++) = '-';
 			n = -n;
 		}
-		c[a] = n % 10 + 48;
+		*(c + a++) = n % 10 + 48;
 		n = n / 10;
-		a++;
 	}
 	return (c);
 }
 
-static char	*ft_strrev(char *f)
+static char	*ft_strrev(char *str)
 {
-	int		a;
-	int		len;
+	size_t	a;
+	size_t	len;
 	char	b;
 
 	a = 0;
-	len = ft_strlen(f);
+	len = ft_strlen(str);
 	while (len - 1 > a)
 	{
-		if (f[a] == '-')
+		if (*(str + a) == '-')
 			a++;
-		b = f[a];
-		f[a] = f[len - 1];
-		f[len - 1] = b;
-		len--;
-		a++;
+		b = *(str + a);
+		*(str + a++) = *(str + len - 1);
+		*(str + len-- - 1) = b;
 	}
-	return (f);
+	return (str);
 }

@@ -8,8 +8,5 @@ void	ft_bzero(void *array, size_t bytes)
 	a = 0;
 	b = (char *)array;
 	while (a < bytes)
-	{
-		b[a] = 0;
-		a++;
-	}
+		*(b + a++) = 0;
 }

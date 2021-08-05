@@ -14,12 +14,11 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		return (NULL);
 	if (len > hlen)
 		len = hlen;
-	i = 0;
-	while (haystack[i] && i < len - nlen + 1)
+	i = -1;
+	while (*(haystack + ++i) && i < len - nlen + 1)
 	{
 		if (ft_strncmp((haystack + i), needle, nlen) == 0)
 			return ((char *)(haystack + i));
-		i++;
 	}
 	return (NULL);
 }
